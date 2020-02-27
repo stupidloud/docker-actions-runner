@@ -9,14 +9,11 @@ RUN curl https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bioni
 
 RUN echo 'runner ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-
 WORKDIR /actions-runner
 
 ENV RUNNER_VERSION 2.165.2
 
-RUN curl -L -O https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && tar -zxf actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && rm -f actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
+RUN curl -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz | tar xz
     && chown -R runner:runner /actions-runner
 
 COPY ./entrypoint.sh /
