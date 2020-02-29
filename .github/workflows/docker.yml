@@ -19,3 +19,4 @@ jobs:
         name: kleveralt/opb
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        workdir: 'ubuntu-18.04'
